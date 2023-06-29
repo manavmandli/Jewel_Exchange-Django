@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GWR-ORDER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9e444f4b7e.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</head>
+
+<body>
+    {% if success_message %}
+    <script>
+        alert('{{ success_message }}');
+    </script>
+    {% endif %}
+    <!-- navbar section start -->
+    <header class="text-gray-800 body-font">
+        <div class="container mx-auto px-20 flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">Neelkanth</span>
+            </a>
+            <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900" href="/retailer/home">Home</a>
+                <a class="mr-5 hover:text-gray-900" href="/retailer/product">Products</a>
+                <a class="mr-5 hover:text-gray-900" href="/retailer/services">Services</a>
+                <a class="mr-5 hover:text-gray-900" href="/retailer/contact">Contact</a>
+            </nav>
+            <button class="mr-5"><a href="/retailer/cart"><i class="fa fa-shopping-cart"
+                        aria-hidden="true"></i></a></button>
+
+            <button class="mr-5"><a href="/retailer/like"><i class="fa fa-heart-o" aria-hidden="true"></i></a></button>
+            <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation"
+                class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-yellow-600 dark:hover:bg-yellow-600 dark:focus:ring-blue-800"
+                type="button"><i class="fa fa-user" aria-hidden="true"></i> <svg class="w-4 h-4 ml-2" aria-hidden="true"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg></button>
+
+            <!-- Dropdown menu -->
+            <div id="dropdownInformation"
+                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                    <div>{{retailer.name}}</div>
+                    <div class="font-medium truncate">{{retailer.email}}</div>
+                </div>
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+                    <li>
+                        <a href="/retailer/home"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/retailer/recent_order"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Your
+                            orders</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                    </li>
+                </ul>
+                <div class="py-2">
+                    <a href="{% url 'logout' %}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                        out</a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <!-- navbar section end -->
+    <div class="container mx-auto p-4 px-20">
+        <h1 class="text-2xl mb-4 text-center"><span class="border-b-2 border-yellow-600">Recent Orders </span></h1>
+
+        <div class="grid grid-cols-1 gap-4">
+            {% for order in orders %}
+            <!-- Order 1 -->
+            <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                <div class="p-4">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-medium text-yellow-600 truncate">Order #{{order.id}}</h2>
+                        <p class="text-sm text-gray-500">Placed on {{order.date_placed}}</p>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="flex items-center">
+                            <img src="/media/{{order.product_img1}}" alt="Product Image" class="h-12 w-12">
+                            <div class="ml-2">
+                                <p class="text-sm font-medium text-gray-800">{{order.product_name}}</p>
+                                <p class="text-xs text-gray-600">Weight:-{{order.product_wgt}}</p>
+                                <p class="text-xs text-gray-600">Quantity:-{{order.product_quantity}}</p>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-sm text-gray-800">Price:- {{order.product_price}}</p>
+                            <p class="text-sm text-gray-800">Total Price:- {{order.total_price}}</p>
+                            <p class="text-sm text-gray-800 font-semibold">Status: {{order.status}}</p>
+                            {% if order.status == 'pending' %}
+                            <p class="text-sm text-gray-800 font-semibold">Delivery Date: None</p>
+                            {% else %}
+                            <p class="text-sm text-gray-800 font-semibold">Delivery Date: {{order.date_delivery}}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Add more orders here -->
+            <a href="product" class="flex font-semibold text-yellow-600 text-sm mt-10">
+
+                <svg class="fill-current mr-2 text-yellow-600 w-4" viewBox="0 0 448 512">
+                    <path
+                        d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
+                </svg>
+                Continue Shopping
+            </a>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+ .profile-wrapper {
+     position: relative;
+ }
+
+ .profile-icon {
+     display: inline-block;
+     cursor: pointer;
+ }
+
+ .dropdown-menu {
+     display: none;
+     position: absolute;
+     top: 100%;
+     left: 0;
+     width: 200px;
+     background-color: #f1f1f1;
+     padding: 10px;
+ }
+
+ .dropdown-menu ul {
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ .dropdown-menu li {
+     margin-bottom: 5px;
+ }
+
+ .dropdown-menu a {
+     text-decoration: none;
+     color: #333;
+ }
+
+ /* Show the dropdown menu when the profile icon is clicked */
+ .profile-wrapper:hover .dropdown-menu {
+     display: block;
+ }
