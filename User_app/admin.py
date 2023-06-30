@@ -9,3 +9,7 @@ class TestimonialsModelAdmin(admin.ModelAdmin):
 @admin.register(SubscriberModel)
 class SubscriberModelAdmin(admin.ModelAdmin):
     list_display = ("id","name","email")
+
+@admin.register(ContactFormModel)
+class ContactFormModelAdmin(admin.ModelAdmin):
+    list_display = ("id","name","email","subject","message")

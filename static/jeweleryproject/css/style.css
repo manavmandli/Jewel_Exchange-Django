@@ -8,3 +8,16 @@
 .card-registration .select-arrow {
     top: 13px;
 }
+
+nav a {
+    position: relative;
+    transition: border-bottom-color 0.3s;
+}
+
+nav a:hover {
+    border-bottom: 2px solid #EAB308;
+}
+.p-6 {
+    margin-top: 6rem;
+    padding: 1.5rem;
+}

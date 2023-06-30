@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from retailer.views import *
 from wholesaler.views import *
 from User_app.models import *
+from django.db.models import Sum
 
 
 def home(request):
@@ -28,12 +29,34 @@ def home(request):
     return render(request,"jeweleryproject/index.html",context)
 
 def products(request):
-    return render(request,"jeweleryproject/productlist.html")
+    best_selling_products = OrderModel.objects.values('product_img1', 'product_price', 'product_name').annotate(total_quantity=Sum('product_quantity')).order_by('-total_quantity')[:12]
+    context={
+        'best_selling':best_selling_products,
+    }
+    print(best_selling_products)
+    return render(request,"jeweleryproject/productlist.html",context)
 
 def services(request):
-    return render(request,"jeweleryproject/services.html")
+    if request.method=="POST":
+        name = request.POST['full-name']
+        email = request.POST['email']
+        subscriber = SubscriberModel(name=name, email=email)
+        subscriber.save()
+    testimonials=TestimonialsModel.objects.all().order_by('-id')[:5]
+    print(testimonials)
+    context={
+        'testimonial':testimonials,
+    }
+    return render(request,"jeweleryproject/services.html",context)
 
 def contact(request):
+    if request.method=="POST":
+        name = request.POST['full-name']
+        email = request.POST['email']
+        subject=request.POST['subject']
+        message=request.POST['message']
+        subscriber = ContactFormModel(name=name, email=email,subject=subject,message=message)
+        subscriber.save()
     return render(request,"jeweleryproject/contact.html")
 
 def login_view(request):
