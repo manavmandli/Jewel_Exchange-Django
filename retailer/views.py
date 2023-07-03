@@ -5,14 +5,26 @@ from retailer.models import *
 from wholesaler.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from User_app.models import *
 
 # Create your views here.
 @login_required
 def home(request):
     if request.user.is_authenticated:
+        if request.method=="POST":
+            name = request.POST['full-name']
+            email = request.POST['email']
+            subscriber = SubscriberModel(name=name, email=email)
+            subscriber.save()
+        product_detail = ProductModel.objects.all().order_by('-id')[:5]
+        print(product_detail)
+        testimonials=TestimonialsModel.objects.all().order_by('-id')[:5]
+        print(testimonials)
         retailer=RetailorModel.objects.get(email=request.user.email)
         context={
             'retailer':retailer,
+            'collection':product_detail,
+            'testimonial':testimonials,
         }
     return render(request,"retailor/index.html",context)
 
@@ -45,6 +57,13 @@ def contact(request):
         context={
             'retailer':retailer,
         }
+        if request.method=="POST":
+            name = request.POST['full-name']
+            email = request.POST['email']
+            subject=request.POST['subject']
+            message=request.POST['message']
+            subscriber = ContactFormModel(name=name, email=email,subject=subject,message=message)
+            subscriber.save()
     return render(request,"retailor/contact.html",context)
 
 @login_required

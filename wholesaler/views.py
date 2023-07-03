@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from jeweleryproject.urls import *
 from wholesaler.models import *
 from retailer.models import *
+from User_app.models import *
 from django.contrib.auth.decorators import login_required
 
 
@@ -13,23 +14,49 @@ from django.contrib.auth.decorators import login_required
 def home(request):
      if request.user.is_authenticated:
         findwholesaler=WholesalerModel.objects.get(email=request.user.email)
+        if request.method=="POST":
+            name = request.POST['full-name']
+            email = request.POST['email']
+            subscriber = SubscriberModel(name=name, email=email)
+            subscriber.save()
+        product_detail = ProductModel.objects.all().order_by('-id')[:5]
+        print(product_detail)
+        testimonials=TestimonialsModel.objects.all().order_by('-id')[:5]
+        print(testimonials)
         context={
-            'wholesaler':findwholesaler,
+        'collection':product_detail,
+        'testimonial':testimonials,
+        'wholesaler':findwholesaler,
         }
         return render(request,"wholesaler/index.html",context)
 
 @login_required
 def services(request):
     if request.user.is_authenticated:
+        if request.method=="POST":
+            name = request.POST['full-name']
+            email = request.POST['email']
+            subscriber = SubscriberModel(name=name, email=email)
+            subscriber.save()
+        testimonials=TestimonialsModel.objects.all().order_by('-id')[:5]
         findwholesaler=WholesalerModel.objects.get(email=request.user.email)
+        print(testimonials)
         context={
-            'wholesaler':findwholesaler,
+        'testimonial':testimonials,
+         'wholesaler':findwholesaler,
         }
         return render(request,"wholesaler/service.html",context)
 
 @login_required
 def contact(request):
     if request.user.is_authenticated:
+        if request.method=="POST":
+            name = request.POST['full-name']
+            email = request.POST['email']
+            subject=request.POST['subject']
+            message=request.POST['message']
+            subscriber = ContactFormModel(name=name, email=email,subject=subject,message=message)
+            subscriber.save()
         findwholesaler=WholesalerModel.objects.get(email=request.user.email)
         context={
             'wholesaler':findwholesaler,
@@ -108,7 +135,7 @@ def order_update(request,pk):
         context = {
             "orderdata":orderdata,
         }
-        return render(request,"wholesaler/order_manage.html",{'success_message': success_message}, context)
+        return render(request,"wholesaler/order_manage.html", context)
     return redirect('order_manage')
 
 def order_detail(request,pk):

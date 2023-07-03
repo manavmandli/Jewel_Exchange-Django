@@ -1,303 +1,477 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/9e444f4b7e.js" crossorigin="anonymous"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/9e444f4b7e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <title>GWR-CART</title>
-</head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'jeweleryproject/css/style.css' %}"
+    />
+    <title>Jewel Exchange-Cart</title>
+  </head>
 
-<body>
+  <body>
     <!-- navbar section start -->
     <header class="text-gray-800 body-font">
-        <div class="container mx-auto px-20 flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
-                    viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                <span class="ml-3 text-xl">Neelkanth</span>
-            </a>
-            <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                <a class="mr-5 hover:text-gray-900" href="/retailer/home">Home</a>
-                <a class="mr-5 hover:text-gray-900" href="/retailer/product">Products</a>
-                <a class="mr-5 hover:text-gray-900" href="/retailer/services">Services</a>
-                <a class="mr-5 hover:text-gray-900" href="/retailer/contact">Contact</a>
-            </nav>
-            <button class="mr-5"><a href="/retailer/cart"><i class="fa fa-shopping-cart"
-                        aria-hidden="true"></i></a></button>
+      <div
+        class="container mx-auto px-20 flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            ></path>
+          </svg>
+          <span class="ml-3 text-xl">Jewel Exchange</span>
+        </a>
+        <nav
+          class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a class="mr-5 hover:text-gray-900" href="/retailer/home">Home</a>
+          <a class="mr-5 hover:text-gray-900" href="/retailer/product"
+            >Products</a
+          >
+          <a class="mr-5 hover:text-gray-900" href="/retailer/services"
+            >Services</a
+          >
+          <a class="mr-5 hover:text-gray-900" href="/retailer/contact"
+            >Contact</a
+          >
+        </nav>
+        <button class="mr-5">
+          <a href="/retailer/cart"
+            ><i class="fa fa-shopping-cart" aria-hidden="true"></i
+          ></a>
+        </button>
 
-            <button class="mr-5"><a href="/retailer/like"><i class="fa fa-heart-o" aria-hidden="true"></i></a></button>
-            <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation"
-                class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-yellow-600 dark:hover:bg-yellow-600 dark:focus:ring-blue-800"
-                type="button"><i class="fa fa-user" aria-hidden="true"></i> <svg class="w-4 h-4 ml-2" aria-hidden="true"
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg></button>
+        <button class="mr-5">
+          <a href="/retailer/like"
+            ><i class="fa fa-heart-o" aria-hidden="true"></i
+          ></a>
+        </button>
+        <button
+          id="dropdownInformationButton"
+          data-dropdown-toggle="dropdownInformation"
+          class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-yellow-600 dark:hover:bg-yellow-600 dark:focus:ring-blue-800"
+          type="button"
+        >
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <svg
+            class="w-4 h-4 ml-2"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
 
-            <!-- Dropdown menu -->
-            <div id="dropdownInformation"
-                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                    <div>{{retailer.name}}</div>
-                    <div class="font-medium truncate">{{retailer.email}}</div>
-                </div>
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
-                    <li>
-                        <a href="/retailer/home"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="/retailer/recent_order"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Your
-                            orders</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                    </li>
-                </ul>
-                <div class="py-2">
-                    <a href="{% url 'logout' %}"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                        out</a>
-                </div>
-            </div>
-
+        <!-- Dropdown menu -->
+        <div
+          id="dropdownInformation"
+          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+        >
+          <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+            <div>{{retailer.name}}</div>
+            <div class="font-medium truncate">{{retailer.email}}</div>
+          </div>
+          <ul
+            class="py-2 text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdownInformationButton"
+          >
+            <li>
+              <a
+                href="/retailer/home"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a
+                href="/retailer/recent_order"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >Your orders</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >Earnings</a
+              >
+            </li>
+          </ul>
+          <div class="py-2">
+            <a
+              href="{% url 'logout' %}"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Sign out</a
+            >
+          </div>
         </div>
+      </div>
     </header>
     <!-- navbar section end -->
     <div class="container mx-auto mt-10">
-        <div class="flex shadow-md my-10">
-            <div class="w-3/4 bg-white px-10 py-10">
-                <div class="flex justify-between border-b pb-8">
-                    <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-                    {% if items %}
-                    <h2 class="font-semibold text-2xl">{{items}} Items</h2>
-                    {% endif %}
-                </div>
-                <div class="flex mt-10 mb-5">
-                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
-                    <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Quantity
-                    </h3>
-                    <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
-                    <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
-                </div>
-                {% for cart in cart_items %}
-                <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-                    <div class="flex w-2/5"> <!-- product -->
-                        <div class="w-20">
-                            <img class="h-24" src="/media/{{cart.product_img1}}" alt="">
-                        </div>
-                        <div class="flex flex-col justify-between ml-4 flex-grow">
-                            <span class="font-bold text-sm">Name:-{{cart.product_name}}</span>
-                            <span class="text-grey-500 text-xs">Category:-{{cart.product_category}}</span>
-                            <span class="text-grey-500 text-xs">Weight:-{{cart.product_wgt}} grms</span>
-                            <a href="/retailer/remove-cart/{{cart.id}}"
-                                class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
-                        </div>
-                    </div>
-                    <div class="flex justify-center w-1/5">
-                        <a href="/retailer/minus-cart/{{cart.id}}" class="mt-3">
-                            <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                                <path
-                                    d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                            </svg>
-
-                        </a>
-
-                        <input class="mx-2 border text-center w-8" type="text" value="{{cart.product_quantity}}">
-
-                        <a href="/retailer/plus-cart/{{cart.id}}" class="mt-3">
-                            <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                                <path
-                                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                            </svg>
-                        </a>
-
-                    </div>
-                    <span class="text-center w-1/5 font-semibold text-sm">{{cart.product_price}}
-                        &#8377;</span>
-                    <span class="text-center w-1/5 font-semibold text-sm">
-                        {{cart.total_price}}
-                        &#8377;</span>
-                </div>
-                {% endfor %}
-
-                <a href="product" class="flex font-semibold text-indigo-600 text-sm mt-10">
-
-                    <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
-                        <path
-                            d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
-                    </svg>
-                    Continue Shopping
-                </a>
+      <div class="flex shadow-md my-10">
+        <div class="w-3/4 bg-white px-10 py-10">
+          <div class="flex justify-between border-b pb-8">
+            <h1 class="font-semibold text-2xl">Shopping Cart</h1>
+            {% if items %}
+            <h2 class="font-semibold text-2xl">{{items}} Items</h2>
+            {% endif %}
+          </div>
+          <div class="flex mt-10 mb-5">
+            <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">
+              Product Details
+            </h3>
+            <h3
+              class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+            >
+              Quantity
+            </h3>
+            <h3
+              class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+            >
+              Price
+            </h3>
+            <h3
+              class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+            >
+              Total
+            </h3>
+          </div>
+          {% for cart in cart_items %}
+          <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+            <div class="flex w-2/5">
+              <!-- product -->
+              <div class="w-20">
+                <img class="h-24" src="/media/{{cart.product_img1}}" alt="" />
+              </div>
+              <div class="flex flex-col justify-between ml-4 flex-grow">
+                <span class="font-bold text-sm"
+                  >Name:-{{cart.product_name}}</span
+                >
+                <span class="text-grey-500 text-xs"
+                  >Category:-{{cart.product_category}}</span
+                >
+                <span class="text-grey-500 text-xs"
+                  >Weight:-{{cart.product_wgt}} grms</span
+                >
+                <a
+                  href="/retailer/remove-cart/{{cart.id}}"
+                  class="font-semibold hover:text-red-500 text-gray-500 text-xs"
+                  >Remove</a
+                >
+              </div>
             </div>
+            <div class="flex justify-center w-1/5">
+              <a href="/retailer/minus-cart/{{cart.id}}" class="mt-3">
+                <svg
+                  class="fill-current text-gray-600 w-3"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                  />
+                </svg>
+              </a>
 
-            <div id="summary" class="w-1/4 px-8 py-10">
-                <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
-                <div class="flex justify-between mt-10 mb-5">
-                    {% if items %}
-                    <span class="font-semibold text-sm uppercase">Items {{items}}</span>
-                    {% endif %}
-                    <span class="font-semibold text-sm">{{totalamt}} &#8377;</span>
-                </div>
-                <div>
-                    <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
-                    <select class="block p-2 text-gray-600 w-full text-sm">
-                        <option>Standard shipping - $10.00</option>
-                    </select>
-                </div>
-                <div class="py-10">
-                    <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
-                    <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
-                </div>
-                <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Apply</button>
-                <div class="border-t mt-8">
-                    <div class="flex font-semibold justify-between py-6 text-sm uppercase">
-                        <span>Total cost</span>
-                        <span>{{totalamt}} &#8377;</span>
-                    </div>
-                    <a href="/retailer/checkout"><button
-                            class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button></a>
-                </div>
+              <input
+                class="mx-2 border text-center w-8"
+                type="text"
+                value="{{cart.product_quantity}}"
+              />
+
+              <a href="/retailer/plus-cart/{{cart.id}}" class="mt-3">
+                <svg
+                  class="fill-current text-gray-600 w-3"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                  />
+                </svg>
+              </a>
             </div>
+            <span class="text-center w-1/5 font-semibold text-sm"
+              >{{cart.product_price}} &#8377;</span
+            >
+            <span class="text-center w-1/5 font-semibold text-sm">
+              {{cart.total_price}} &#8377;</span
+            >
+          </div>
+          {% endfor %}
+
+          <a
+            href="product"
+            class="flex font-semibold text-indigo-600 text-sm mt-10"
+          >
+            <svg
+              class="fill-current mr-2 text-indigo-600 w-4"
+              viewBox="0 0 448 512"
+            >
+              <path
+                d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"
+              />
+            </svg>
+            Continue Shopping
+          </a>
         </div>
+
+        <div id="summary" class="w-1/4 px-8 py-10">
+          <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+          <div class="flex justify-between mt-10 mb-5">
+            {% if items %}
+            <span class="font-semibold text-sm uppercase">Items {{items}}</span>
+            {% endif %}
+            <span class="font-semibold text-sm">{{totalamt}} &#8377;</span>
+          </div>
+          <div>
+            <label class="font-medium inline-block mb-3 text-sm uppercase"
+              >Shipping</label
+            >
+            <select class="block p-2 text-gray-600 w-full text-sm">
+              <option>Standard shipping - $10.00</option>
+            </select>
+          </div>
+          <div class="py-10">
+            <label
+              for="promo"
+              class="font-semibold inline-block mb-3 text-sm uppercase"
+              >Promo Code</label
+            >
+            <input
+              type="text"
+              id="promo"
+              placeholder="Enter your code"
+              class="p-2 text-sm w-full"
+            />
+          </div>
+          <button
+            class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase"
+          >
+            Apply
+          </button>
+          <div class="border-t mt-8">
+            <div
+              class="flex font-semibold justify-between py-6 text-sm uppercase"
+            >
+              <span>Total cost</span>
+              <span>{{totalamt}} &#8377;</span>
+            </div>
+            <a href="/retailer/checkout"
+              ><button
+                class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full"
+              >
+                Checkout
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
     </div>
     <!-- footer strats here -->
     <footer class="text-gray-600 body-font">
+      <div
+        class="container px-20 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col"
+      >
         <div
-            class="container px-20 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-            <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-                <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2"
-                        class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                    </svg>
-                    <span class="ml-3 text-xl">Neelkanth</span>
-                </a>
-                <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
-            </div>
-            <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
-                    <nav class="list-none mb-10">
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">First Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Second Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Third Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
-                        </li>
-                    </nav>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
-                    <nav class="list-none mb-10">
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">First Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Second Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Third Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
-                        </li>
-                    </nav>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
-                    <nav class="list-none mb-10">
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">First Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Second Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Third Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
-                        </li>
-                    </nav>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
-                    <nav class="list-none mb-10">
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">First Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Second Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Third Link</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
-                        </li>
-                    </nav>
-                </div>
-            </div>
+          class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left"
+        >
+          <a
+            class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              ></path>
+            </svg>
+            <span class="ml-3 text-xl">Jewel Exchange</span>
+          </a>
+          <p class="mt-2 text-sm text-gray-500">
+            Elegant logo symbolizing trust, value, and seamless jewelry
+            exchange.
+          </p>
         </div>
-        <div class="bg-gray-100">
-            <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-                <p class="text-gray-500 text-sm text-center sm:text-left">© 2023 Neelkanth —
-                    <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1"
-                        target="_blank">@knyttneve</a>
-                </p>
-                <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-                    <a class="text-gray-500">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            class="w-5 h-5" viewBox="0 0 24 24">
-                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                        </svg>
-                    </a>
-                    <a class="ml-3 text-gray-500">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            class="w-5 h-5" viewBox="0 0 24 24">
-                            <path
-                                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a class="ml-3 text-gray-500">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                        </svg>
-                    </a>
-                    <a class="ml-3 text-gray-500">
-                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                            <path stroke="none"
-                                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
-                            </path>
-                            <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                        </svg>
-                    </a>
-                </span>
-            </div>
+        <div
+          class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center"
+        >
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2
+              class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+            >
+              Jewelry Category
+            </h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Gents Kada</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Jadtar Jewelry</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Unisex Rings</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Unisex Chains</a>
+              </li>
+            </nav>
+          </div>
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2
+              class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+            >
+              Important Links
+            </h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Home</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Service</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Products</a>
+              </li>
+              <li>
+                <a class="text-gray-600 hover:text-gray-800">Contact Us</a>
+              </li>
+            </nav>
+          </div>
+          <div class="w-full md:w-64 px-4">
+            <h2
+              class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+            >
+              Contact
+            </h2>
+            <p class="text-sm text-gray-500">Address: Ghodasar, Ahemedabad</p>
+            <p class="text-sm text-gray-500">Phone: +91 81287 22990</p>
+          </div>
         </div>
+      </div>
+      <div class="bg-gray-100">
+        <div
+          class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row"
+        >
+          <p class="text-gray-500 text-sm text-center sm:text-left">
+            © 2023 Jewel Exchange-
+            <a
+              href="https://twitter.com/knyttneve"
+              rel="noopener noreferrer"
+              class="text-gray-600 ml-1"
+              target="_blank"
+              >Developed By Manav</a
+            >
+          </p>
+          <span
+            class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"
+          >
+            <a class="text-gray-500">
+              <svg
+                fill="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                ></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg
+                fill="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+                ></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+                ></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+              <svg
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="0"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="none"
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                ></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </div>
     </footer>
     <!-- footer end here -->
-</body>
-
+  </body>
 </html>
