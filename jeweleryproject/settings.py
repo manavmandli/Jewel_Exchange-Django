@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-2_dmyja_#aqif1k@iuurpun+-(co=@-rg8mbh9y*wc%7wxf&rk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','192.168.1.34']
+ALLOWED_HOSTS = ['*','192.168.1.38','192.168.75.231']
 
 
 # Application definition
@@ -40,7 +40,13 @@ INSTALLED_APPS = [
     'retailer',
     'wholesaler',
     'User_app',
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
 ]
+# SOCIALACCOUNT_LOGIN_ON_GET=True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,8 +141,19 @@ EMAIL_HOST_PASSWORD = 'npnbvrkdljfdnkmi'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    # Add other authentication backends for your project if needed
+#    'allauth.account.auth_backends.AuthenticationBackend',
 ]
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         }
+#     }
+# }
 SESSION_COOKIE_NAME = 'jeweleryproject_sessionid'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

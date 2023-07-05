@@ -1,0 +1,4 @@
+django
+Django-Verify-Email
+Pillow
+django-allauth
